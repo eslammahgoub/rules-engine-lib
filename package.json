@@ -1,0 +1,73 @@
+{
+  "name": "rules-engine-lib",
+  "version": "0.0.1",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "description": "A Ts rules engine lib",
+  "author": {
+    "name": "Eslam ibrahim",
+    "email": "eslam.mahgoub@gmail.com",
+    "url": "https://eslamibrahim.dev"
+  },
+  "license": "MIT",
+  "scripts": {
+    "test": "bun test",
+    "coverage": "bun run clean && bun test --coverage",
+    "examples": "bun run ./examples/*.ts",
+    "lint": "bunx biome lint --write ./rules-engine",
+    "check": "bunx biome check ./rules-engine",
+    "format": "bunx biome format --write ./rules-engine",
+    "clean": "rm -rf ./dist ./coverage",
+    "build": "bun run clean && bun run build.ts",
+    "prepublishOnly": "bun run clean && bun run build",
+    "prepare": "husky"
+  },
+  "exports": {
+    "types": "./dist/index.d.ts",
+    "import": "./dist/index.js",
+    "require": "./dist/index.cjs"
+  },
+  "keywords": [
+    "ts",
+    "bun",
+    "typescript rules engine",
+    "javascript rules engine",
+    "business rules",
+    "business",
+    "rules",
+    "engine",
+    "rules engine",
+    "business rules engine"
+  ],
+  "files": [
+    "dist"
+  ],
+  "lint-staged": {
+    "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": [
+      "biome check --files-ignore-unknown=true",
+      "biome check --write --no-errors-on-unmatched",
+      "biome check --write --organize-imports-enabled=false --no-errors-on-unmatched",
+      "biome check --write --unsafe --no-errors-on-unmatched",
+      "biome format --write --no-errors-on-unmatched",
+      "biome lint --write --no-errors-on-unmatched"
+    ],
+    "*": [
+      "biome check --no-errors-on-unmatched --files-ignore-unknown=true"
+    ]
+  },
+  "devDependencies": {
+    "@biomejs/biome": "1.9.4",
+    "@commitlint/cli": "^19.6.0",
+    "@types/bun": "latest",
+    "bun-plugin-dts": "^0.3.0",
+    "husky": "^9.1.7"
+  },
+  "peerDependencies": {
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@commitlint/config-conventional": "^19.6.0"
+  }
+}
