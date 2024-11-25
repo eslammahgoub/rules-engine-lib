@@ -19,11 +19,11 @@ interface Operator {
 	in: string[] | number[];
 	matches: RegExp;
 	not:
-	| string
-	| {
-		in?: number[] | string[];
-		includes?: number[] | string[];
-	};
+		| string
+		| {
+				in?: number[] | string[];
+				includes?: number[] | string[];
+		  };
 }
 
 interface IFAND {
@@ -230,9 +230,9 @@ class RulesEngine {
 		input:
 			| string
 			| {
-				in?: string[] | number[];
-				includes?: string[] | number[];
-			},
+					in?: string[] | number[];
+					includes?: string[] | number[];
+			  },
 		dataSetValue: Primitive,
 	): number {
 		if (dataSetValue == null) return 0;
