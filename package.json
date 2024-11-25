@@ -23,6 +23,11 @@
     "build": "bun run clean && bun run build.ts",
     "prepublishOnly": "bun run clean && bun run build"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eslammahgoub/rules-engine-lib"
+  },
+  "bugs": "https://github.com/eslammahgoub/rules-engine-lib/issues",
   "exports": {
     "types": "./dist/index.d.ts",
     "import": "./dist/index.js",
