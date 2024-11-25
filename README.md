@@ -202,5 +202,5 @@ expect(company.isEmployee).toEqual(false);
 
 ## TODOs
 
-[ ] Rule weight for priority
-[ ] Logger interface for custom logging
+- [ ] Rule weight for priority
+- [ ] Logger interface for custom logging
