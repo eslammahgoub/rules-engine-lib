@@ -21,8 +21,7 @@
     "format": "bunx biome format --write ./rules-engine",
     "clean": "rm -rf ./dist ./coverage",
     "build": "bun run clean && bun run build.ts",
-    "prepublishOnly": "bun run clean && bun run build",
-    "prepare": "husky"
+    "prepublishOnly": "bun run clean && bun run build"
   },
   "exports": {
     "types": "./dist/index.d.ts",
