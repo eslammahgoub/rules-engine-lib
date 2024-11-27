@@ -13,6 +13,9 @@
 #       run: bundle audit
 pre-commit:
   parallel: true
+  scripts:
+    'commit_check':
+      runner: bash
   commands:
     check:
       glob: "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}"
