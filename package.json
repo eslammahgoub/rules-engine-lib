@@ -21,7 +21,9 @@
     "format": "bunx biome format --write ./rules-engine",
     "clean": "rm -rf ./dist ./coverage",
     "build": "bun run clean && bun run build.ts",
-    "prepublishOnly": "bun run clean && bun run build"
+    "prepublishOnly": "bun run clean && bun run build",
+    "version": "bun ./release/version.ts",
+    "version:bump": "bun ./release/bump.ts minor"
   },
   "repository": {
     "type": "git",
