@@ -23,7 +23,8 @@
 		"build": "bun run clean && bun run build.ts",
 		"prepublishOnly": "bun run clean && bun run build",
 		"version": "bun ./release/version.ts",
-		"version:bump": "bun ./release/bump.ts minor"
+		"version:bump": "bun ./release/bump.ts minor",
+		"changelog": "git cliff --prepend CHANGELOG.md -u"
 	},
 	"repository": {
 		"type": "git",
