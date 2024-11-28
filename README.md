@@ -46,5 +46,4 @@ pnpm add rules-engine-lib
 
 ## TODOs
 
-- [ ] Rule weight for priority
 - [ ] Logger interface for custom logging
