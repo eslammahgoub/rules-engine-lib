@@ -1,4 +1,12 @@
-# Introduction
+# Table Content
+
+- [Introduction](#introduction)
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Stable features](#stable-features)
+- [TODOs](#todos)
+
+## Introduction
 
 rules-engine-lib is a simple rules engine allows you to cleanly abstract your rules away from your application code
 
@@ -6,9 +14,7 @@ rules-engine-lib is a simple rules engine allows you to cleanly abstract your ru
 - Results can modify your dataset or can return a new dataset of outcomes.
 - It's isomorphic and has no package dependencies - great for the browser and the server.
 
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Stable features](#stable-features)
+---------------------------------------------------------------
 
 ## Installation
 
@@ -36,7 +42,7 @@ pnpm add rules-engine-lib
 
 ### Stable features
 
-- [Documentation of the main stable features (`index.ts` module)](index.md)
+- [Documentation of the main stable features (`RulesEngine` module)](index.md)
 
 ## TODOs
 
