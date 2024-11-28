@@ -14,8 +14,6 @@ rules-engine-lib is a simple rules engine allows you to cleanly abstract your ru
 - Results can modify your dataset or can return a new dataset of outcomes.
 - It's isomorphic and has no package dependencies - great for the browser and the server.
 
----------------------------------------------------------------
-
 ## Installation
 
 ````bash
