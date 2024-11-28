@@ -163,6 +163,46 @@ expect(data.communication.error).toBeUndefined();
 
 ```
 
+## Weight the condition
+
+```typescript
+import RulesEngine from 'rules-engine';
+
+const conditions = {
+   "Must be not student": {
+    IF: {
+     "person.school": true,
+    },
+    THEN: {
+     "person.error": 'Person is student'
+    },
+    WEIGHT: 1,
+   },
+   "Must be age GreaterThan 16": {
+    IF: {
+     "person.age": {
+      greaterThan: 16,
+     },
+    },
+    THEN: {
+     "person.error": 'Person is old'
+    },
+    WEIGHT: 0
+   },
+};
+    
+const dataset = {
+   person: { name: 'Gon', age: 18, adultPresent: false, school: true },
+   company: { isEmployed: false },
+};
+
+const rules = new RulesEngine(conditions, { modifyDataset: true });
+rules.run(dataset);
+
+expect(dataset.person.error).toBe('Person is student');
+
+```
+
 ## Special paths eg: contains dot
 
 ```typescript

@@ -42,10 +42,7 @@ interface Logic {
 	OTHERWISE?: {
 		[key: string]: Primitive | unknown[] | Record<string, unknown>;
 	};
-	/**
-	 * @TODO: Implement weighted Logic so we can order all the logics by weight and executed based on that order
-	 */
-	// WEIGHT?: number;
+	WEIGHT?: number;
 }
 
 interface Conditions {
@@ -76,7 +73,9 @@ class RulesEngine {
 		if (dataset == null) return;
 		if (typeof dataset != "object") return;
 
-		for (const key in this.conditions) {
+		const sortedIds = this.sortByWeights();
+
+		for (const key of sortedIds) {
 			const condition = this.conditions[key];
 			let result = false;
 			if (condition.IF) {
@@ -252,6 +251,26 @@ class RulesEngine {
 			return 1;
 
 		return 0;
+	}
+
+	/**
+	 *
+	 * @description Sort conditions by weight and return array of conditions id
+	 * @returns {string[]}
+	 */
+	private sortByWeights(): string[] {
+		const conditions = [];
+		for (const key in this.conditions) {
+			if (Object.hasOwn(this.conditions, key)) {
+				conditions.push({ ...this.conditions[key], id: key });
+			}
+		}
+
+		return conditions
+			.sort((a, b) => {
+				return (a.WEIGHT ?? 0) - (b.WEIGHT ?? 0);
+			})
+			.map((condition) => condition.id);
 	}
 }
 

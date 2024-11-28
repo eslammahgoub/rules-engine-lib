@@ -132,7 +132,11 @@ describe("RulesEngine:", () => {
 	test("Test 6: Array paths", () => {
 		const conditions = {
 			"Only John and Bob are allowed": {
-				IF: { "['company', 'person.name']": { matches: new RegExp(/(john|bob)/, "i") } },
+				IF: {
+					"['company', 'person.name']": {
+						matches: new RegExp(/(john|bob)/, "i"),
+					},
+				},
 				THEN: { "company.error": "Only John and Bob are allowed" },
 			},
 		};
@@ -140,7 +144,7 @@ describe("RulesEngine:", () => {
 		const dataset: Record<string, Record<string, number | boolean | string>> = {
 			company: {
 				"person.name": "John",
-			}
+			},
 		};
 
 		const rules = new RulesEngine(conditions, { modifyDataset: true });
@@ -180,17 +184,17 @@ describe("RulesEngine:", () => {
 			"Must be name contains J": {
 				IF: {
 					"person.name": {
-						contains: 'J',
+						contains: "J",
 					},
 				},
 				THEN: {
-					"person.success": "Name contains J"
+					"person.success": "Name contains J",
 				},
 			},
 		};
 
 		const dataset: Record<string, Record<string, number | boolean | string>> = {
-			person: { name: 'John', age: 12, adultPresent: false },
+			person: { name: "John", age: 12, adultPresent: false },
 			company: { isEmployed: false },
 		};
 
@@ -205,17 +209,17 @@ describe("RulesEngine:", () => {
 			"Must be HxH Friends": {
 				IF: {
 					"person.name": {
-						includes: ['Gon', 'Killua', 'Kurapika'],
+						includes: ["Gon", "Killua", "Kurapika"],
 					},
 				},
 				THEN: {
-					"person.success": "HxH friends"
+					"person.success": "HxH friends",
 				},
 			},
 		};
 
 		const dataset: Record<string, Record<string, number | boolean | string>> = {
-			person: { name: 'Gon', age: 12, adultPresent: false },
+			person: { name: "Gon", age: 12, adultPresent: false },
 			company: { isEmployed: false },
 		};
 
@@ -234,13 +238,13 @@ describe("RulesEngine:", () => {
 					},
 				},
 				THEN: {
-					"person.isOld": true
+					"person.isOld": true,
 				},
 			},
 		};
 
 		const dataset: Record<string, Record<string, number | boolean | string>> = {
-			person: { name: 'Gon', age: 18, adultPresent: false },
+			person: { name: "Gon", age: 18, adultPresent: false },
 			company: { isEmployed: false },
 		};
 
@@ -248,5 +252,40 @@ describe("RulesEngine:", () => {
 		rules.run(dataset);
 
 		expect(dataset.person.isOld).toBeTruthy();
+	});
+
+	test("Test 7: conditions with weights", () => {
+		const conditions = {
+			"Must be not student": {
+				IF: {
+					"person.school": true,
+				},
+				THEN: {
+					"person.error": "Person is student",
+				},
+				WEIGHT: 1,
+			},
+			"Must be age GreaterThan 16": {
+				IF: {
+					"person.age": {
+						greaterThan: 16,
+					},
+				},
+				THEN: {
+					"person.error": "Person is old",
+				},
+				WEIGHT: 0,
+			},
+		};
+
+		const dataset: Record<string, Record<string, number | boolean | string>> = {
+			person: { name: "Gon", age: 18, adultPresent: false, school: true },
+			company: { isEmployed: false },
+		};
+
+		const rules = new RulesEngine(conditions, { modifyDataset: true });
+		rules.run(dataset);
+
+		expect(dataset.person.error).toBe("Person is student");
 	});
 });
