@@ -26,6 +26,8 @@ or
 npm install rules-engine-lib
 ```
 
+or
+
 ```bash
 yarn add rules-engine-lib
 ```
