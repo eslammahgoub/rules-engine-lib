@@ -8,6 +8,9 @@
 
 ## Introduction
 
+[![npm](https://img.shields.io/npm/v/rules-engine-lib.svg)](https://npmjs.org/package/rules-engine-lib)
+[![install size](https://packagephobia.com/badge?p=rules-engine-lib)](https://packagephobia.com/result?p=rules-engine-lib)
+
 rules-engine-lib is a simple rules engine allows you to cleanly abstract your rules away from your application code
 
 - Run your dataset against a conditions JSON object.
