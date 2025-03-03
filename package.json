@@ -53,7 +53,7 @@
 		"@biomejs/biome": "1.9.4",
 		"@types/bun": "latest",
 		"bun-plugin-dts": "^0.3.0",
-		"lefthook": "^1.8.5"
+		"lefthook": "^1.11.2"
 	},
 	"peerDependencies": {
 		"typescript": "^5.6.3"
